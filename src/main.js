@@ -117,7 +117,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster = "";
+var currentPoster ;
 // event listeners go here 👇
 randomImageButton.addEventListener("click", setCurrentPoster)
 posterFormButton.addEventListener("click", displayForm)
@@ -132,24 +132,24 @@ function getRandomIndex(array) {
 }
 
 function setCurrentPoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  imageQuote.innerText = quotes[getRandomIndex(quotes)];
+  posterImage.src = images[getRandomIndex(images)]
+  imageQuote.innerText = quotes[getRandomIndex(quotes)]
   imageTitle.innerText = titles[getRandomIndex(titles)]
 }
 
 function displayForm() {
-  posterForm.className = 'poster-form';
+  posterForm.className = 'poster-form'
   mainPage.className = 'main-poster hidden'
 }
 
 function displaySaved() {
-  showSavedPoster.className = 'saved-poster';
+  showSavedPoster.className = 'saved-poster'
   mainPage.className = 'main-poster hidden'
 }
 
 function goHome() {
-  showSavedPoster.className = 'saved-poster hidden';
-  posterForm.className = 'poster-form hidden';
+  showSavedPoster.className = 'saved-poster hidden'
+  posterForm.className = 'poster-form hidden'
   mainPage.className = 'main-poster'
 }
 
@@ -159,4 +159,16 @@ function userPoster() {
   imageQuote.innerText = createNewQuote.value
   event.preventDefault()
   goHome()
+  posterInstance()
+  saveToArray()
+}
+
+function posterInstance() {
+  currentPoster = new Poster(posterImage.src, imageTitle.innerText, imageQuote.innerText)
+}
+
+function saveToArray() {
+  images.push(posterImage.src)
+  titles.push(imageTitle.innerText)
+  quotes.push(imageQuote.innerText)
 }
