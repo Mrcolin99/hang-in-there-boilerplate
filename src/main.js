@@ -13,6 +13,7 @@ var showSavedButton = document.querySelector(".show-saved")
 
 var takeMeBack = document.querySelector(".show-main")
 var backToMain = document.querySelector(".back-to-main")
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -113,13 +114,13 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster = "";
-
 // event listeners go here 👇
-randomImageButton.addEventListener("click", setCurrentPoster);
-posterFormButton.addEventListener("click", displayForm);
+randomImageButton.addEventListener("click", setCurrentPoster)
+posterFormButton.addEventListener("click", displayForm)
 showSavedButton.addEventListener("click", displaySaved)
 takeMeBack.addEventListener("click", goHome)
 backToMain.addEventListener("click", goHome)
+makePosterButton.addEventListener("click", makePosterQuote)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
