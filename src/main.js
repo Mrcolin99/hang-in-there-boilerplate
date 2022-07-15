@@ -14,6 +14,10 @@ var showSavedButton = document.querySelector(".show-saved")
 var takeMeBack = document.querySelector(".show-main")
 var backToMain = document.querySelector(".back-to-main")
 
+var createNewURL = document.querySelector("#poster-image-url")
+var createNewQuote = document.querySelector("#poster-quote")
+var createNewTitle = document.querySelector("#poster-title")
+var makePosterButton = document.querySelector(".make-poster")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -120,7 +124,7 @@ posterFormButton.addEventListener("click", displayForm)
 showSavedButton.addEventListener("click", displaySaved)
 takeMeBack.addEventListener("click", goHome)
 backToMain.addEventListener("click", goHome)
-makePosterButton.addEventListener("click", makePosterQuote)
+makePosterButton.addEventListener("click", userPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -129,8 +133,8 @@ function getRandomIndex(array) {
 
 function setCurrentPoster() {
   posterImage.src = images[getRandomIndex(images)];
-  imageQuote.innerHTML = quotes[getRandomIndex(quotes)];
-  imageTitle.innerHTML = titles[getRandomIndex(titles)]
+  imageQuote.innerText = quotes[getRandomIndex(quotes)];
+  imageTitle.innerText = titles[getRandomIndex(titles)]
 }
 
 function displayForm() {
@@ -147,4 +151,12 @@ function goHome() {
   showSavedPoster.className = 'saved-poster hidden';
   posterForm.className = 'poster-form hidden';
   mainPage.className = 'main-poster'
+}
+
+function userPoster() {
+  posterImage.src = createNewURL.value
+  imageTitle.innerText = createNewTitle.value
+  imageQuote.innerText = createNewQuote.value
+  event.preventDefault()
+  goHome()
 }
