@@ -1,5 +1,6 @@
 // query selector variables go here 👇
-var randomImage = document.querySelector(".show-random");
+var randomImageButton = document.querySelector(".show-random");
+var posterImage = document.querySelector(".poster-img");
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -99,12 +100,16 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster ;
+var currentPoster = "";
 
 // event listeners go here 👇
-randomImage.addEventListener("click", getRandomIndex());
+randomImageButton.addEventListener("click", setCurrentPoster);
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function setCurrentPoster() {
+  posterImage.src = images[getRandomIndex(images)]
 }
