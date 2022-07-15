@@ -171,5 +171,4 @@ function saveToArray() {
   images.push(posterImage.src)
   titles.push(imageTitle.innerText)
   quotes.push(imageQuote.innerText)
-  console.log(quotes)
 }
