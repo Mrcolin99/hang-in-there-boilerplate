@@ -139,6 +139,7 @@ function setCurrentPoster() {
   posterImage.src = images[getRandomIndex(images)]
   imageQuote.innerText = quotes[getRandomIndex(quotes)]
   imageTitle.innerText = titles[getRandomIndex(titles)]
+  posterInstance()
 }
 
 function displayForm() {
@@ -185,5 +186,15 @@ function savePoster() {
 }
 
 function injectPoster() {
-  posterGrid.innerHTML =
+  posterGrid.innerHTML = ``
+  for (var i = 0; i < savedPosters.length; i++){
+    posterGrid.innerHTML += `
+    <article class="mini-poster">
+      <img class="new-img" src="${savedPosters[i].imageURL}" alt="saved poster">
+      <h1 class="new-poster-title">"${savedPosters[i].title}"</h1>
+      <h3 class="new-poster-quote">"${savedPosters[i].quote}"</h3>
+    </article>
+    `
+  }
+
 }
