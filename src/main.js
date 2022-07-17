@@ -21,6 +21,7 @@ var makePosterButton = document.querySelector(".make-poster")
 
 var saveThisPoster = document.querySelector(".save-poster")
 var posterGrid = document.querySelector(".saved-posters-grid")
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -129,6 +130,7 @@ takeMeBack.addEventListener("click", goHome)
 backToMain.addEventListener("click", goHome)
 makePosterButton.addEventListener("click", userPoster)
 saveThisPoster.addEventListener("click", savePoster)
+posterGrid.addEventListener("dblclick", deleteSelectedPoster)
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
@@ -189,12 +191,21 @@ function injectPoster() {
   posterGrid.innerHTML = ``
   for (var i = 0; i < savedPosters.length; i++){
     posterGrid.innerHTML += `
-    <article class="mini-poster">
+    <article class="mini-poster" id="${savedPosters[i].id}">
       <img class="new-img" src="${savedPosters[i].imageURL}" alt="saved poster">
       <h1 class="new-poster-title">"${savedPosters[i].title}"</h1>
       <h3 class="new-poster-quote">"${savedPosters[i].quote}"</h3>
     </article>
     `
   }
+}
 
+function deleteSelectedPoster() {
+  var id = event.target.parentNode.id
+  for (var i = 0; i < savedPosters.length; i++){
+    if (savedPosters[i].id == id) {
+      savedPosters.splice(i, 1)
+    }
+  }
+  injectPoster()
 }
