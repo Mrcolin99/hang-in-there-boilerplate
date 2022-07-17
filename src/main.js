@@ -123,6 +123,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster ;
 // event listeners go here 👇
+window.addEventListener("load", setCurrentPoster)
 randomImageButton.addEventListener("click", setCurrentPoster)
 posterFormButton.addEventListener("click", displayForm)
 showSavedButton.addEventListener("click", displaySaved)
